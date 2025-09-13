@@ -1,0 +1,9 @@
+// setup initializes serial and the button pin
+    void setup() {
+      Serial.begin(9600);
+      pinMode(A0, INPUT);
+    }
+
+    void loop() {
+      delay(1000);
+    }
