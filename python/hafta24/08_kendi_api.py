@@ -42,7 +42,7 @@ uygulama = Flask(__name__)
 kullanicilar = [
     {"id": 1, "ad": "Ahmet Yılmaz", "email": "ahmet@example.com", "yas": 28},
     {"id": 2, "ad": "Ayşe Kara",    "email": "ayse@example.com",  "yas": 24},
-    {"id": 3, "ad": "Mehmet Demir", "email": "mehmet@example.com","yas": 32},
+    {"id": 5, "ad": "Mehmet Demir", "email": "mehmet@example.com","yas": 32},
 ]
 
 # -----------------------------------------------------------
@@ -54,7 +54,7 @@ kullanicilar = [
 def ana_sayfa():
     """API'ye hoş geldiniz mesajı"""
     return jsonify({
-        "mesaj": "Benim API'me hoş geldiniz!",
+        "mesaj": "Benim API'me hoş geldiniz!- Furkan",
         "versiyon": "1.0",
         "endpoints": {
             "GET /kullanicilar": "Tüm kullanıcıları listele",
@@ -64,10 +64,7 @@ def ana_sayfa():
         }
     })
 
-# -----------------------------------------------------------
-# ENDPOINT 2: Tüm kullanıcıları listele
-# GET /kullanicilar
-# -----------------------------------------------------------
+
 
 @uygulama.route("/kullanicilar")
 def kullanicilari_listele():
@@ -77,10 +74,10 @@ def kullanicilari_listele():
         "kullanicilar": kullanicilar
     })
 
-# -----------------------------------------------------------
-# ENDPOINT 3: Belirli kullanıcıyı getir
-# GET /kullanicilar/1
-# -----------------------------------------------------------
+# # -----------------------------------------------------------
+# # ENDPOINT 3: Belirli kullanıcıyı getir
+# # GET /kullanicilar/1
+# # -----------------------------------------------------------
 
 @uygulama.route("/kullanicilar/<int:kullanici_id>")
 def kullanici_getir(kullanici_id):
@@ -99,10 +96,10 @@ def kullanici_getir(kullanici_id):
         # 404 durum kodu ile hata mesajı gönder
         return jsonify({"hata": f"{kullanici_id} numaralı kullanıcı bulunamadı"}), 404
 
-# -----------------------------------------------------------
-# ENDPOINT 4: Yeni kullanıcı ekle
-# POST /kullanicilar
-# -----------------------------------------------------------
+# # -----------------------------------------------------------
+# # ENDPOINT 4: Yeni kullanıcı ekle
+# # POST /kullanicilar
+# # -----------------------------------------------------------
 
 @uygulama.route("/kullanicilar", methods=["POST"])
 def kullanici_ekle():
@@ -135,10 +132,10 @@ def kullanici_ekle():
         "kullanici": yeni_kullanici
     }), 201
 
-# -----------------------------------------------------------
-# ENDPOINT 5: Hesap makinesi
-# GET /hesapla?sayi1=5&sayi2=3
-# -----------------------------------------------------------
+# # -----------------------------------------------------------
+# # ENDPOINT 5: Hesap makinesi
+# # GET /hesapla?sayi1=5&sayi2=3
+# # -----------------------------------------------------------
 
 @uygulama.route("/hesapla")
 def hesapla():
@@ -159,11 +156,14 @@ def hesapla():
         "bolum": sayi1 / sayi2 if sayi2 != 0 else "Sıfıra bölünemez"
     })
 
-# -----------------------------------------------------------
-# SUNUCUYU BAŞLAT
-# -----------------------------------------------------------
+# # -----------------------------------------------------------
+# # SUNUCUYU BAŞLAT
+# # -----------------------------------------------------------
 
 if __name__ == "__main__":
+    import socket
+    yerel_ip = socket.gethostbyname(socket.gethostname())
+
     print("=" * 50)
     print("  API SUNUCUSU BAŞLIYOR...")
     print("=" * 50)
@@ -171,13 +171,16 @@ if __name__ == "__main__":
     print("Aşağıdaki adresleri tarayıcında veya")
     print("başka bir Python dosyasından test edebilirsin:")
     print()
-    print("  http://127.0.0.1:5000/")
-    print("  http://127.0.0.1:5000/kullanicilar")
-    print("  http://127.0.0.1:5000/kullanicilar/1")
-    print("  http://127.0.0.1:5000/hesapla?sayi1=10&sayi2=4")
+    print(f"  Yerel (bu bilgisayar) : http://127.0.0.1:5000/")
+    print(f"  Yerel Ağ (diğer cihazlar): http://{yerel_ip}:5000/")
+    print()
+    print(f"  http://{yerel_ip}:5000/kullanicilar")
+    print(f"  http://{yerel_ip}:5000/kullanicilar/1")
+    print(f"  http://{yerel_ip}:5000/hesapla?sayi1=10&sayi2=4")
     print()
     print("Durdurmak için: Ctrl + C")
     print("=" * 50)
-    
+
+    # host="0.0.0.0" → Yerel ağdaki tüm cihazlar erişebilir
     # debug=True → Kod değişince otomatik yeniden yükle
-    uygulama.run(debug=True)
+    uygulama.run(host="0.0.0.0", port=5000, debug=True)
