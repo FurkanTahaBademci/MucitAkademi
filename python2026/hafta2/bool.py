@@ -1,0 +1,13 @@
+print(10<8)
+print(10>8)
+print(10==8)
+print(10!=10)
+print(10<=8)
+print(10>=8)
+print(10<8 and 10>8)
+print(10<8 or 10>8)
+print(not(10<8))
+print((3<8) is True)
+
+print((12%5))
+print(12%5 == 2)

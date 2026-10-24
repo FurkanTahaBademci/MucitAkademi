@@ -1,4 +1,6 @@
 listem = [0,1, 2, 3, 4, 5]
+
+
 print(listem[-1:])
 print(listem[-2:])
 print(listem[0:3])

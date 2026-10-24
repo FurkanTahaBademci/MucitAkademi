@@ -1,0 +1,6 @@
+Verilen notların ortalaması hesaplanacaktır.(array ile alabilirsiniz) Ortalamayla birlikte kaç adet not olduğunun bilgisi de verecek
+
+bir sayının çift mi tek mi olduğunu kontrol edecek return olarak geri dönüş yapacak
+
+hipotenüs hesaplama foksiyonu olacak siz 2 değeri vereceksiniz size kalan kenarı dönş yapacak
+

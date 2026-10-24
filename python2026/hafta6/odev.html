@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Dijital Görüntü ve Video Temelleri</title>
+<style>
+  @page {
+    size: A4;
+    margin: 20mm;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    color: #1a1a1a;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+  }
+  .header {
+    border-bottom: 2px solid #2563eb;
+    padding-bottom: 12px;
+    margin-bottom: 24px;
+  }
+  h1 {
+    font-size: 24pt;
+    margin: 0 0 6px 0;
+    color: #0f172a;
+  }
+  .subtitle {
+    font-size: 11pt;
+    color: #64748b;
+    margin: 0;
+  }
+  h2 {
+    font-size: 14pt;
+    color: #1e3a8a;
+    border-left: 4px solid #2563eb;
+    padding-left: 10px;
+    margin-top: 24px;
+    margin-bottom: 10px;
+  }
+  h3 {
+    font-size: 11pt;
+    color: #334155;
+    margin-top: 14px;
+    margin-bottom: 6px;
+  }
+  p, li {
+    font-size: 10pt;
+    color: #334155;
+  }
+  ul {
+    margin-top: 4px;
+    margin-bottom: 12px;
+    padding-left: 20px;
+  }
+  li {
+    margin-bottom: 4px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 9.5pt;
+  }
+  th, td {
+    border: 1px solid #cbd5e1;
+    padding: 8px 10px;
+    text-align: left;
+  }
+  th {
+    background-color: #f1f5f9;
+    color: #0f172a;
+    font-weight: 600;
+  }
+  tr:nth-child(even) {
+    background-color: #f8fafc;
+  }
+  .highlight-box {
+    background-color: #eff6ff;
+    border-left: 3px solid #3b82f6;
+    padding: 10px 14px;
+    border-radius: 4px;
+    margin: 12px 0;
+    font-size: 9.5pt;
+  }
+  .page-break {
+    page-break-before: always;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Dijital Görüntü ve Video Teknolojileri</h1>
+  <p class="subtitle">Sunum & Bilgi Notu Rehberi</p>
+</div>
+
+<h2>1. Görüntü Nasıl Oluşur? (Fotoğrafın Doğuşu)</h2>
+<ul>
+  <li><strong>Fiziksel Başlangıç:</strong> Işık nesneye çarpar ve kameranın merceğinden içeri girer.</li>
+  <li><strong>Sensörün Rolü:</strong> Merceğin arkasındaki CMOS/CCD sensör, milyonlarca küçük ışık algılayıcı hücreden (fotodiyot/piksel) oluşur; gelen fotonları elektrik voltajına dönüştürür.</li>
+  <li><strong>Renklerin Ayrımı (Bayer Filtresi):</strong> Sensörler renk körüdür; yalnızca ışık şiddetini algılar. Önlerine yerleştirilen Kırmızı, Yeşil ve Mavi (RGB) filtre mozaikleriyle her piksel kendi renk tonunu kaydeder.</li>
+  <li><strong>Dijitalleştirme:</strong> Analog sinyal ADC (Analog-to-Digital Converter) ile 0 ve 1 ikili kodlarına çevrilir ve pikseller bütünü oluşturur.</li>
+</ul>
+
+<h2>2. Video Nasıl Oluşur? (Hareket İllüzyonu)</h2>
+<ul>
+  <li><strong>Temel Prensip:</strong> Video akıcı bir sıvı değil; peş peşe çekilmiş ve yüksek hızda gösterilen <em>durgun fotoğraflar serisidir</em>.</li>
+  <li><strong>Retina Kalıcılığı (Persistence of Vision):</strong> İnsan beyni saniyenin küçük bir diliminde art arda gelen resimleri bağımsız algılayamaz; kareler arasındaki boşlukları zihinde tamamlayarak akıcı hareket hissi üretir.</li>
+  <li><strong>Flipbook Mantığı:</strong> Defter köşesine çizilen çizimlerin hızla çevrilerek canlandırılması prensibiyle tamamen aynıdır.</li>
+</ul>
+
+<h2>3. FPS Kavramı (Frames Per Second)</h2>
+<p>Ekranda bir saniyede gösterilen fotoğraf (kare) adedidir:</p>
+<ul>
+  <li><strong>24 FPS (Sinematik Standart):</strong> Hareket bulanıklığı (motion blur) doğal seviyededir; insan gözünün alışık olduğu klasik sinema hissini verir.</li>
+  <li><strong>30 - 60 FPS (TV & Dijital Medya):</strong> Daha keskin, pürüzsüz ve gerçekçi akış sunar. Canlı yayınlar ve mobil videolar için yaygındır.</li>
+  <li><strong>120+ FPS (Oyun & Ağır Çekim):</strong> Giriş gecikmesini en aza indirir; yavaşlatıldığında takılmayan yüksek hızlı çekimler (slow-motion) elde edilmesini sağlar.</li>
+</ul>
+
+<div class="page-break"></div>
+
+<h2>4. Görüntü Formatları ve Çalışma Mantıkları</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Format</th>
+      <th>Çalışma Mantığı</th>
+      <th>Avantajı</th>
+      <th>İdeal Kullanım</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>JPG / JPEG</strong></td>
+      <td>JPEG standardı, JPG uzantısıdır. İnsan gözünün ayırt edemeyeceği renk tonlarını harmanlayıp atar.</td>
+      <td>Çok düşük dosya boyutu, evrensel uyumluluk.</td>
+      <td>Genel fotoğraflar, web sayfaları, sosyal medya.</td>
+    </tr>
+    <tr>
+      <td><strong>PNG</strong></td>
+      <td>Görsel verisini piksel piksel korur; alfa kanalı (şeffaflık) desteği sunar.</td>
+      <td>Sıfır kalite kaybı, transparan zemin.</td>
+      <td>Logolar, grafikler, metin içeren görseller.</td>
+    </tr>
+    <tr>
+      <td><strong>HEIC</strong></td>
+      <td>HEVC video sıkıştırma mimarisini durağan fotoğraflara uygular.</td>
+      <td>JPEG'in yarı boyutunda eşit veya daha yüksek kalite.</td>
+      <td>Mobil cihazlar, iOS galerileri.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>5. Görüntü Sıkıştırma Algoritmaları</h2>
+<p>Ham piksel verileri (RAW) yüksek depolama alanı kaplar. Dosyayı optimize etmek için iki ana mimari kullanılır:</p>
+
+<h3>A. Kayıpsız Sıkıştırma (Lossless)</h3>
+<ul>
+  <li><strong>Prensip:</strong> Orijinal veriden hiçbir detay atılmaz; sadece veriler daha kompakt biçimde kodlanır.</li>
+  <li><strong>Örnek (Run-Length Encoding - RLE):</strong> Yan yana duran 20 beyaz piksel tek tek yazılmak yerine <code>20xBeyaz</code> şeklinde indekslenir.</li>
+  <li><strong>Kullanıldığı Yerler:</strong> PNG, GIF, kayıpsız RAW türevleri.</li>
+</ul>
+
+<h3>B. Kayıplı Sıkıştırma (Lossy)</h3>
+<ul>
+  <li><strong>Prensip:</strong> İnsan gözünün ışık şiddetine (parlaklık) duyarlı, ince renk geçişlerine ise daha duyarsız olması zaafından yararlanılır.</li>
+  <li><strong>Ayrık Kosinüs Dönüşümü (DCT):</strong> Resim 8x8 piksel bloklarına bölünür; gözün zorlandığı yüksek frekanslı ince detaylar silinerek dosya boyutu ciddi oranda düşürülür.</li>
+  <li><strong>Kullanıldığı Yerler:</strong> JPEG, WebP, HEIC.</li>
+</ul>
+
+<div class="highlight-box">
+  <strong>Sunum Tavsiyesi:</strong> Dinleyicilere aktarırken teknik terimleri (DCT, Fotodiyot) önce günlük hayat analojileriyle (çizgi film defteri, boya filtreleri) açıklayıp ardından teknik tanıma geçmek anlaşılırlığı artırır.
+</div>
+
+</body>
+</html>
